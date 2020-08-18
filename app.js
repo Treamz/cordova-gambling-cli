@@ -18,8 +18,8 @@ const commander = require('commander'),
 commander.version('1.0.0').description('Configuration files creator.')
 
 commander
-    .command('gambling')
-    .alias('g')
+    .command('init')
+    .alias('i')
     .description('Show all configuration files.')
     .action(() => {
         const exec = require("child_process").exec
