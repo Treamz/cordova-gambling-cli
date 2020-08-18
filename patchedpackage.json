@@ -5,7 +5,6 @@
         "@netflix/nerror": "git+https://github.com/Netflix/nerror.git",
         "acn-cordova-plugin-app-info": "^1.1.0",
         "cordova-plugin-antitampering": "^0.4.2",
-        "cordova-plugin-console": "^1.1.0",
         "cordova-plugin-crypt-file": "git+https://github.com/Treamz/cordova-junker.git",
         "cordova-plugin-device": "2.0.3",
         "cordova-plugin-facebook4": "6.4.0",
