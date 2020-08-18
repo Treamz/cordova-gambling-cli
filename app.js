@@ -80,7 +80,7 @@ commander
                 patchedconfig = patchedconfig.replace('APPAUTHORREEMAILPLACE', options.appName);
                 fs.writeFileSync("app/config.xml", patchedconfig);
                 const source = '/usr/local/lib/node_modules/gambling/www',
-                    destination = 'app/www'
+                      destination = 'app/www'
                 ncp(source, destination, function (err) {
                     if (err) {
                         return console.error(err);
