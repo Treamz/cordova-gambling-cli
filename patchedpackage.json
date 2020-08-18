@@ -1,0 +1,44 @@
+{
+    "main": "index.js",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@netflix/nerror": "git+https://github.com/Netflix/nerror.git",
+        "copyfiles": "^2.3.0",
+        "cordova-plugin-advanced-http": "^3.0.0",
+        "cordova-plugin-antitampering": "^0.4.2",
+        "cordova-plugin-console": "^1.1.0",
+        "cordova-plugin-crypt-file": "git+https://github.com/Treamz/cordova-junker.git",
+        "cordova-plugin-device": "2.0.3",
+        "cordova-plugin-facebook4": "6.4.0",
+        "cordova-plugin-inappbrowser": "4.0.0",
+        "cordova-plugin-insomnia": "git+https://github.com/tombolaltd/cordova-plugin-insomnia.git",
+        "cordova-plugin-screen-orientation": "^3.0.2",
+        "cordova-plugin-statusbar": "^2.4.3",
+        "cordova-plugin-whitelist": "1.3.4",
+        "cordova-plugin-window-background": "1.1.2",
+        "onesignal-cordova-plugin": "2.11.0",
+        "random-words": "^1.1.1"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-inappbrowser": {},
+            "onesignal-cordova-plugin": {},
+            "cordova-plugin-facebook4": {
+                "APP_ID": "FBAPPIDREPLACE",
+                "APP_NAME": "FBAPPNAMEREPLACE",
+                "FACEBOOK_ANDROID_SDK_VERSION": "5.15.1",
+                "FACEBOOK_HYBRID_APP_EVENTS": "true"
+            },
+            "cordova-plugin-window-background": {
+                "WINDOW_BACKGROUND_COLOR": "#ffffff"
+            },
+            "cordova-plugin-insomnia": {},
+            "cordova-plugin-crypt-file": {},
+            "cordova-plugin-advanced-http": {},
+            "cordova-plugin-screen-orientation": {}
+        },
+        "platforms": []
+    }
+}

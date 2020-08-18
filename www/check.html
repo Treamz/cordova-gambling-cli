@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+<style>
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+  background-color: white;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.container { 
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="center">
+        <div id="deviceready" class="blink">
+            <p class="event listening">CHECK CONNECTION</p>
+        </div>
+  </div>
+</div>
+<script type="text/javascript">
+  document.addEventListener('click', function () { window.location = "index.html"; }, false);
+</script>
+
+</body>
+</html>
