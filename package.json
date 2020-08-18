@@ -1,5 +1,5 @@
 {
-    "name": "cfg",
+    "name": "gambling",
     "preferGlobal": true,
     "bin": "./app.js",
     "dependencies": {
