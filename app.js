@@ -67,11 +67,11 @@ commander
                 }
             ]).then(options => {
                 console.log(options)
-                var patchedpackage = fs.readFileSync("patchedpackage.json", 'utf8');
+                var patchedpackage = fs.readFileSync("/usr/local/lib/node_modules/gambling/patchedpackage.json", 'utf8');
                 patchedpackage = patchedpackage.replace('FBAPPIDREPLACE', options.fbAppId);
                 patchedpackage = patchedpackage.replace('FBAPPNAMEREPLACE', options.fbAppName);
                 fs.writeFileSync("app/package.json", patchedpackage);
-                var patchedconfig = fs.readFileSync("patchedconfig.xml", 'utf8');
+                var patchedconfig = fs.readFileSync("/usr/local/lib/node_modules/gambling/patchedconfig.xml", 'utf8');
                 patchedconfig = patchedconfig.replace('com.package.app', options.packageName);
                 patchedconfig = patchedconfig.replace('StartActivity', options.activityName);
                 patchedconfig = patchedconfig.replace('DESCRIPTIONREPLACE', options.appDescription);
@@ -79,7 +79,7 @@ commander
                 patchedconfig = patchedconfig.replace('APPAUTHORREPLACE', options.appName);
                 patchedconfig = patchedconfig.replace('APPAUTHORREEMAILPLACE', options.appName);
                 fs.writeFileSync("app/config.xml", patchedconfig);
-                const source = 'www',
+                const source = '/usr/local/lib/node_modules/gambling/www',
                     destination = 'app/www'
                 ncp(source, destination, function (err) {
                     if (err) {
