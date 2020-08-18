@@ -1,8 +1,11 @@
 # cordova-gambling-cli
-npm link
 
-gambling i
+`npm install https://github.com/Treamz/cordova-gambling-cli.git`
 
-cd app
+`npm link`
 
-yarn
+`gambling i`
+
+`cd app`
+
+`yarn`
