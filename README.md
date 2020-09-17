@@ -9,3 +9,7 @@
 `cd app`
 
 `yarn`
+
+
+
+`gambling oi -f [PATH]`
