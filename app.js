@@ -4,6 +4,28 @@ var ncp = require('ncp').ncp;
 
 ncp.limit = 16;
 
+const path = require("path")
+
+const getAllFiles = function(dirPath, arrayOfFiles) {
+    files = fs.readdirSync(dirPath)
+  
+    arrayOfFiles = arrayOfFiles || []
+  
+    files.forEach(function(file) {
+        let isImage = /png|jpg|gif?/gi.test(file);
+      if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+        arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
+      } else if(isImage){
+        arrayOfFiles.push(path.join(dirPath, "/", file))
+      }
+    })
+  
+    return arrayOfFiles
+  }
+
+const Jimp = require('jimp');
+
+
 const commander = require('commander'),
     {
         prompt
@@ -92,4 +114,40 @@ commander
         })
     })
 
+
+    commander
+    .command('optimizeimg')
+    .alias('oi')
+    .option('-f, --folder [value]', "Image folder") // args.cold = true/false, optional, default is `undefined`
+    .description('Image Optimization')
+    .action((args) => {
+        if(args.folder !== true) {
+        const result = getAllFiles(args.folder)
+        console.log(result)
+        app(result)
+        }
+        // console.log(image)
+    });
+
+
 commander.parse(process.argv)
+
+async function app(images, width, height = Jimp.AUTO, quality) {
+    await Promise.all(
+		images.map(async imgPath => {
+            console.log(imgPath)
+            const image = await Jimp.read(imgPath);
+            let width = image.bitmap.width
+            let height = image.bitmap.height
+            console.log("OK")
+			await image.resize(width + 1, height - 1);
+            await image.quality(10);
+            await image.color([
+                { apply: 'hue', params: [-60] },
+                { apply: 'lighten', params: [10] },
+              ]);
+			await image.writeAsync(imgPath);
+		})
+	);
+}
+
