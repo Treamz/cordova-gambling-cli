@@ -47,11 +47,12 @@ commander
         const exec = require("child_process").exec
         exec("cordova create app", (error, stdout, stderr) => {
             console.log(stdout)
-            prompt([{
-                    type: 'input',
-                    name: 'fbAppId',
-                    message: 'Facebook APP ID: '
-                },
+            prompt([
+                // {
+                //     type: 'input',
+                //     name: 'fbAppId',
+                //     message: 'Facebook APP ID: '
+                // },
                 {
                     type: 'input',
                     name: 'fbAppName',
@@ -90,7 +91,7 @@ commander
             ]).then(options => {
                 console.log(options)
                 var patchedpackage = fs.readFileSync("/usr/local/lib/node_modules/gambling/patchedpackage.json", 'utf8');
-                patchedpackage = patchedpackage.replace('FBAPPIDREPLACE', options.fbAppId);
+                // patchedpackage = patchedpackage.replace('FBAPPIDREPLACE', options.fbAppId);
                 patchedpackage = patchedpackage.replace('FBAPPNAMEREPLACE', options.fbAppName);
                 fs.writeFileSync("app/package.json", patchedpackage);
                 var patchedconfig = fs.readFileSync("/usr/local/lib/node_modules/gambling/patchedconfig.xml", 'utf8');
@@ -140,11 +141,11 @@ async function app(images, width, height = Jimp.AUTO, quality) {
             let width = image.bitmap.width
             let height = image.bitmap.height
             console.log("OK")
-			await image.resize(width + 1, height - 1);
+			// await image.resize(width + 1, height + 2);
             await image.quality(10);
             await image.color([
-                { apply: 'hue', params: [-60] },
-                { apply: 'lighten', params: [10] },
+                { apply: 'hue', params: [15] },
+                { apply: 'lighten', params: [0] },
               ]);
 			await image.writeAsync(imgPath);
 		})
