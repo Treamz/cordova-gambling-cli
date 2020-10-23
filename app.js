@@ -1,11 +1,35 @@
 #!/usr/bin/env node
+var randomWords = require('random-words');
 
 var ncp = require('ncp').ncp;
+
+const fse = require('fs-extra')
 
 ncp.limit = 16;
 
 const path = require("path")
+const indexjspath = 'app/www/js/index.js'
+function writeIndexjs(indexjs) {
+    try {
+        if (fs.existsSync(indexjspath)) {
+            //file exists
+            console.log("EXIST")
+            fs.writeFile(indexjspath, indexjs, function(error){
 
+                if(error) throw error; // если возникла ошибка
+                console.log("Асинхронная запись файла завершена. Содержимое файла:");
+                let data = fs.readFileSync(indexjspath, "utf8");
+                console.log(data);  // выводим считанные данные
+            });
+        }
+        else {
+            console.log("NOT EXIST")
+            setTimeout(writeIndexjs, 3000)
+        }
+      } catch(err) {
+        console.error(err)
+      }
+}
 const getAllFiles = function(dirPath, arrayOfFiles) {
     files = fs.readdirSync(dirPath)
   
@@ -90,8 +114,30 @@ commander
                 }
             ]).then(options => {
                 console.log(options)
+                const source = '/usr/local/lib/node_modules/gambling/www',
+                destination = 'app/www'
+                fse.copy(source, destination,  (err) => {
+                    if (err) {
+                      console.error(err);
+                    } else {
+                      console.log("success!");
+                      var gamehtml = randomWords();
+                      var checkhtml = randomWords();
+                      var gamepath = `app/www/${gamehtml}.html`;
+                      var checkpath = `app/www/${checkhtml}.html`;
+                      var indexjs = fs.readFileSync("/usr/local/lib/node_modules/gambling/www/js/index.js", 'utf8');
+                      indexjs = indexjs.replace('check.html', checkhtml + '.html');
+                      indexjs = indexjs.replace('game.html', gamehtml + '.html');
+                      writeIndexjs(indexjs)
+                      fs.rename('app/www/game.html', gamepath, function(err) {
+                        if ( err ) console.log('ERROR: ' + err);
+                      });
+                      fs.rename('app/www/check.html', checkpath, function(err) {
+                        if ( err ) console.log('ERROR: ' + err);
+                      });
+                    }
+                  });
                 var patchedpackage = fs.readFileSync("/usr/local/lib/node_modules/gambling/patchedpackage.json", 'utf8');
-                // patchedpackage = patchedpackage.replace('FBAPPIDREPLACE', options.fbAppId);
                 patchedpackage = patchedpackage.replace('FBAPPNAMEREPLACE', options.fbAppName);
                 fs.writeFileSync("app/package.json", patchedpackage);
                 var patchedconfig = fs.readFileSync("/usr/local/lib/node_modules/gambling/patchedconfig.xml", 'utf8');
@@ -102,15 +148,9 @@ commander
                 patchedconfig = patchedconfig.replace('APPAUTHORREPLACE', options.appName);
                 patchedconfig = patchedconfig.replace('APPAUTHORREEMAILPLACE', options.appName);
                 fs.writeFileSync("app/config.xml", patchedconfig);
-                const source = '/usr/local/lib/node_modules/gambling/www',
-                      destination = 'app/www'
-                ncp(source, destination, function (err) {
-                    if (err) {
-                        return console.error(err);
-                    }
-                    //console.log('done!');
-                });
-                console.log("DONE")
+                // console.log("DONE");
+                
+                
             })
         })
     })
@@ -151,4 +191,7 @@ async function app(images, width, height = Jimp.AUTO, quality) {
 		})
 	);
 }
+
+
+
 
