@@ -18,11 +18,20 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <icon density="mdpi" src="res/mipmap-mdpi/ic_launcher.png" />
-        <icon density="hdpi" src="res/mipmap-hdpi/ic_launcher.png" />
-        <icon density="xhdpi" src="res/mipmap-xhdpi/ic_launcher.png" />
-        <icon density="xxhdpi" src="res/mipmap-xxhdpi/ic_launcher.png" />
-        <icon density="xxxhdpi" src="res/mipmap-xxxhdpi/ic_launcher.png" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <resource-file src="res/android/values/ic_launcher_background.xml" target="/app/src/main/res/values/ic_launcher_background.xml" />
+        <icon background="@color/ic_launcher_background" density="mdpi" foreground="res/android/mipmap-mdpi/ic_launcher_foreground.png" />
+        <icon background="@color/ic_launcher_background" density="hdpi" foreground="res/android/mipmap-hdpi/ic_launcher_foreground.png" />
+        <icon background="@color/ic_launcher_background" density="xhdpi" foreground="res/android/mipmap-xhdpi/ic_launcher_foreground.png" />
+        <icon background="@color/ic_launcher_background" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/ic_launcher_foreground.png" />
+        <icon background="@color/ic_launcher_background" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/ic_launcher_foreground.png" />
+        <resource-file src="res/android/mipmap-mdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+        <resource-file src="res/android/mipmap-hdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+        <resource-file src="res/android/mipmap-xhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+        <resource-file src="res/android/mipmap-xxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+        <resource-file src="res/android/mipmap-xxxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
