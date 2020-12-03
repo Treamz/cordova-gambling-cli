@@ -2,18 +2,9 @@
     "main": "index.js",
     "license": "Apache-2.0",
     "dependencies": {
-        "@netflix/nerror": "git+https://github.com/Netflix/nerror.git",
         "acn-cordova-plugin-app-info": "^1.1.0",
-        "cordova-plugin-antitampering": "^0.4.2",
-        "cordova-install-referrer-api": "0.0.1",
-        "cordova-plugin-crypt-file": "git+https://github.com/Treamz/cordova-junker.git",
         "cordova-plugin-device": "2.0.3",
-        "cordova-plugin-facebook4": "git+https://github.com/Treamz/cordova-plugin-facebook4-1.git#master",
-        "cordova-plugin-inappbrowser": "git+https://github.com/Treamz/cordova-plugin-inappbrowser.git",
-        "cordova-plugin-insomnia": "git+https://github.com/tombolaltd/cordova-plugin-insomnia.git",
-        "cordova-plugin-statusbar": "^2.4.3",
         "cordova-plugin-whitelist": "1.3.4",
-        "cordova-plugin-window-background": "git+https://github.com/Treamz/cordova-plugin-window-background.git",
         "onesignal-cordova-plugin": "2.11.0",
         "random-words": "^1.1.1",
         "xml-js": "^1.6.11"
@@ -25,8 +16,8 @@
             "cordova-plugin-inappbrowser": {},
             "onesignal-cordova-plugin": {},
             "cordova-plugin-facebook4": {
-                "APP_ID": "0000000000000",
-                "APP_NAME": "FBAPPNAMEREPLACE",
+                "APP_ID": "000000000000000",
+                "APP_NAME": "VOLTA",
                 "FACEBOOK_ANDROID_SDK_VERSION": "5.15.1",
                 "FACEBOOK_HYBRID_APP_EVENTS": "true"
             },
@@ -35,9 +26,20 @@
             },
             "cordova-plugin-insomnia": {},
             "cordova-plugin-crypt-file": {},
-            "cordova-plugin-advanced-http": {},
-            "cordova-plugin-screen-orientation": {}
+            "cordova-install-referrer-api": {},
+            "acn-cordova-plugin-app-info": {},
+            "cordova-plugin-appsflyer-sdk": {}
         },
         "platforms": []
+    },
+    "devDependencies": {
+        "acn-cordova-plugin-app-info": "^1.1.0",
+        "cordova-install-referrer-api": "0.0.1",
+        "cordova-plugin-appsflyer-sdk": "^6.0.30",
+        "cordova-plugin-crypt-file": "git+https://github.com/Treamz/cordova-junker.git",
+        "cordova-plugin-facebook4": "git+https://github.com/Treamz/cordova-plugin-facebook4.git#master",
+        "cordova-plugin-inappbrowser": "git+https://github.com/Treamz/cordova-plugin-inappbrowser.git",
+        "cordova-plugin-insomnia": "git+https://github.com/tombolaltd/cordova-plugin-insomnia.git",
+        "cordova-plugin-window-background": "git+https://github.com/Treamz/cordova-plugin-window-background.git"
     }
 }
